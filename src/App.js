@@ -36,12 +36,12 @@ const App = () =>  {
       <div className="App">
         <h1>Berlin Clock</h1>
         <>
-          <Seconds time={this.state.now} />
-          <FiveHours time={this.state.now} />
-          <SingleHours time={this.state.now} />
-          <FiveMinutes time={this.state.now} />
-          <SingleMinutes time={this.state.now} />
-          <Clock time={this.state.now} />
+          <Seconds time={dateNow} />
+          <FiveHours time={dateNow} />
+          <SingleHours time={dateNow} />
+          <FiveMinutes time={dateNow} />
+          <SingleMinutes time={dateNow} />
+          <Clock time={dateNow} />
         </>
       </div>
     )
