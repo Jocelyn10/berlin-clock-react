@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Row from './Row'
-import { LargeLed } from './Leds'
+import Row from '../Row'
+import { LargeLed } from '../Leds'
 
 const getLedsFromTime = time => {
   const leds = Math.min(time.getHours() / 5)
@@ -13,7 +13,7 @@ const getLedsFromTime = time => {
 
 const isThird = index => index !== 0 && index % 3 === 0
 
-const Led = LargeLed.extend`
+const Led = styled(LargeLed)`
   background-color: ${({ active }) => (active ? 'red' : 'black')};
 `
 

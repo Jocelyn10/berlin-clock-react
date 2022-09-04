@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Row from './Row'
-import { LargeLed } from './Leds'
+import Row from '../Row'
+import { LargeLed } from '../Leds'
 
 const getLastDigit = number => Number.parseInt(number.toString().slice(-1), 10)
 
@@ -21,7 +21,7 @@ const getLedsFromTime = time => {
   ]
 }
 
-const Led = LargeLed.extend`
+const Led = styled(LargeLed)`
   background-color: ${({ active }) => (active ? 'red' : 'black')};
 `
 
