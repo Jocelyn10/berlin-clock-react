@@ -26,7 +26,7 @@ const Led = styled(LargeLed)`
 `
 
 const SingleHours = ({ time }) => (
-  <Row>{getLedsFromTime(time).map(active => <Led active={active} />)}</Row>
+  <Row>{getLedsFromTime(time).map((active, index) => <Led key={index} active={active} />)}</Row>
 )
 
 export default SingleHours

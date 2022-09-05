@@ -10,15 +10,22 @@ import FiveMinutes from './components/FiveMinutes';
 import Clock from './components/Clock';
 import TimePickerComponent from './components/TimePicker';
 
+const BerlinClockWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `;
+
 const App = () => {
   const [dateNow, setDateNow] = useState(new Date());
+  const [singleFiveMinutesValue, setSingleFiveMinutesValue] = useState(null);
 
   useEffect(() => {
     // save intervalId to clear the interval when the
     // component re-renders
     const intervalId = setInterval(() => {
       setDateNow(new Date());
-    }, 1000);
+    }, 100000);
 
     // clear interval on re-render to avoid memory leaks
     return () => clearInterval(intervalId);
@@ -26,11 +33,9 @@ const App = () => {
     // when we update it
   }, [dateNow]);
 
-  const BerlinClockWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `;
+  useEffect(() => {
+    console.log("value : ", singleFiveMinutesValue)
+  }, [singleFiveMinutesValue])
   
   return (
     <div className="App">
@@ -43,7 +48,7 @@ const App = () => {
         <SingleMinutes time={dateNow} />
         <Clock time={dateNow} />
       </BerlinClockWrapper>
-      <TimePickerComponent />
+      <TimePickerComponent timeValue={(time) => setSingleFiveMinutesValue(time.$d)} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
@@ -6,8 +6,12 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
-export default function TimePickerComponent() {
-  const [value, setValue] = useState(dayjs());
+const TimePickerComponent = ({ timeValue }) => {
+  const [time, setTime] = useState(dayjs());
+
+  useEffect(() => {
+    timeValue(time)
+  },[time, timeValue]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -19,9 +23,9 @@ export default function TimePickerComponent() {
           inputFormat="HH:mm:ss"
           mask="__:__:__"
           label=""
-          value={value}
-          onChange={(newValue) => {
-            setValue(newValue);
+          value={time}
+          onChange={(newTime) => {
+            setTime(newTime);
           }}
           renderInput={(params) => <TextField {...params} />}
         />
@@ -29,3 +33,5 @@ export default function TimePickerComponent() {
     </LocalizationProvider>
   );
 }
+
+export default TimePickerComponent

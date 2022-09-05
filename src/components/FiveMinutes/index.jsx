@@ -21,7 +21,7 @@ const Led = styled(SmallLed)`
 const FiveMinute = ({ time }) => (
   <Row>
     {getLedsFromTime(time).map((active, index) => (
-      <Led active={active} isThird={isThird(index)} />
+      <Led key={index} active={active} isThird={isThird(index)} />
     ))}
   </Row>
 )
