@@ -10,6 +10,19 @@ const randomIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
+const secondsValue = (berlinClockChar, randomNumb) => {
+  if (
+    (berlinClockChar.toString().substring(0, 1) === 'Y' &&
+      randomNumb % 2 !== 0) ||
+    (berlinClockChar.toString().substring(0, 1) !== 'Y' &&
+      randomNumb % 2 === 0)
+  ) {
+    return randomNumb + 1;
+  }
+
+  return randomNumb
+}
+
 export const singleMinutes = (time) => {
   let berlinClockconversion = '';
 
@@ -41,7 +54,7 @@ export const fiveMinutes = (time) => {
   if (time) {
     let ledsArray = getLedsFromTime(time);
 
-    ledsArray.map((led, index) => {
+    ledsArray.forEach((led, index) => {
       if (led) {
         if (index !== 0 && index % 2 === 0) {
           berlinClockconversionArray.push('R');
@@ -131,53 +144,34 @@ export const digitalClockBerlinClockConvert = (time) => {
 export const berlinClockDigitalClockConvert = (berlinClockValue) => {
   if (berlinClockValue) {
     let hours = 0;
-    let fiveHours = '';
-    let singleHours = '';
-
     let minutes = 0;
-    let fiveMinutes = '';
-    let singleMinutes = '';
-
     let randomSeconds = randomIntFromInterval(0, 60);
 
-    fiveHours = berlinClockValue.toString().substring(1, 5);
-    fiveHours.split('').map((value) => {
+    berlinClockValue.toString().substring(1, 5).split('').forEach((value) => {
       if (value !== 'O') {
         hours += 5;
       }
     });
 
-    singleHours = berlinClockValue.toString().substring(5, 9);
-    singleHours.split('').map((value) => {
+    berlinClockValue.toString().substring(5, 9).split('').forEach((value) => {
       if (value !== 'O') {
         hours += 1;
       }
     });
 
-    fiveMinutes = berlinClockValue.toString().substring(9, 20);
-    fiveMinutes.split('').map((value) => {
+    berlinClockValue.toString().substring(9, 20).split('').forEach((value) => {
       if (value !== 'O') {
         minutes += 5;
       }
     });
 
-    singleMinutes = berlinClockValue.toString().substring(20, 24);
-    singleMinutes.split('').map((value) => {
+    berlinClockValue.toString().substring(20, 24).split('').forEach((value) => {
       if (value !== 'O') {
         minutes += 1;
       }
     });
 
-    if (
-      (berlinClockValue.toString().substring(0, 1) === 'Y' &&
-        randomSeconds % 2 !== 0) ||
-      (berlinClockValue.toString().substring(0, 1) !== 'Y' &&
-        randomSeconds % 2 === 0)
-    ) {
-      randomSeconds += 1;
-    }
-
-    return `${hours} : ${minutes} : ${randomSeconds}`;
+    return `${hours} : ${minutes} : ${secondsValue(berlinClockValue, randomSeconds)}`;
   }
 
   return '';
