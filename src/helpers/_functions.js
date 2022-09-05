@@ -11,8 +11,8 @@ export const singleMinutes = (time) => {
      * exclure le cas notre module ci-dessus donne 0
      */
     if (lastDigit < 4) {
-      const ZeroLettersCount = berlinClockconversion.length;
-      const ZeroLettersValue = '0'.repeat(ZeroLettersCount);
+      const ZeroLettersCount = 4 - lastDigit;
+      const ZeroLettersValue = 'O'.repeat(ZeroLettersCount);
 
       return berlinClockconversion.concat(ZeroLettersValue);
     }
