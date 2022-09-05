@@ -124,7 +124,7 @@ export const fiveHours = (time) => {
 
 export const seconds = (time) => {
   if (time) {
-    if (time.getSeconds() % 2) return 'Y';
+    if (time.getSeconds() % 2 === 0) return 'Y';
     return 'O';
   }
 

@@ -31,6 +31,7 @@ const BerlinClockWrapper = styled.div`
 
 const App = () => {
   const [dateNow, setDateNow] = useState(new Date());
+
   const [singleMinutesValue, setSingleMinutesValue] = useState(null);
   const [fiveMinutesValue, setFiveMinutesValue] = useState(null);
   const [singleHoursValue, setSingleHoursValue] = useState(null);
@@ -38,6 +39,14 @@ const App = () => {
   const [secondsValue, setSecondsValue] = useState(null);
   const [berlinClockValue, setBerlinClockValue] = useState(null);
   const [digitalClockValue, setDigitalClockValue] = useState('');
+
+  const [singleMinutesText, setSingleMinutesText] = useState(null);
+  const [fiveMinutesText, setFiveMinutesText] = useState(null);
+  const [singleHoursText, setSingleHoursText] = useState(null);
+  const [fiveHoursText, setFiveHoursText] = useState(null);
+  const [secondsText, setSecondsText] = useState(null);
+  const [berlinClockText, setBerlinClockText] = useState(null);
+  const [digitalClockText, setDigitalClockText] = useState('');
 
   useEffect(() => {
     // save intervalId to clear the interval when the
@@ -53,10 +62,13 @@ const App = () => {
   }, [dateNow]);
 
   useEffect(() => {
-    console.log(
-      'digitalClockValue : ',
-      berlinClockDigitalClockConvert(digitalClockValue)
-    );
+    setSingleMinutesText(singleMinutes(singleMinutesValue));
+    setFiveMinutesText(fiveMinutes(fiveMinutesValue));
+    setSingleHoursText(singleHours(singleHoursValue));
+    setFiveHoursText(fiveHours(fiveHoursValue));
+    setSecondsText(seconds(secondsValue));
+    setBerlinClockText(digitalClockBerlinClockConvert(berlinClockValue));
+    setDigitalClockText(berlinClockDigitalClockConvert(digitalClockValue));
   }, [
     singleMinutesValue,
     fiveMinutesValue,
@@ -81,53 +93,60 @@ const App = () => {
 
       <h1>Features 1</h1>
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <h4 className="features-title">Implement the Single Minutes Row :</h4>
         <TimePickerComponent
           timeValue={(time) => setSingleMinutesValue(time.$d)}
         />
-        <TextField disabled />
+        <TextField disabled value={singleMinutesText} />
       </Box>
 
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <h4 className="features-title">Implement the Five Minutes Row :</h4>
         <TimePickerComponent
           timeValue={(time) => setFiveMinutesValue(time.$d)}
         />
-        <TextField disabled />
+        <TextField disabled value={fiveMinutesText} />
       </Box>
 
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <h4 className="features-title">Implement the Single Hours Row :</h4>
         <TimePickerComponent
           timeValue={(time) => setSingleHoursValue(time.$d)}
         />
-        <TextField disabled />
+        <TextField disabled value={singleHoursText} />
       </Box>
 
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <h4 className="features-title">Implement the Five Hours Row :</h4>
         <TimePickerComponent timeValue={(time) => setFiveHoursValue(time.$d)} />
-        <TextField disabled />
+        <TextField disabled value={fiveHoursText} />
       </Box>
 
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <h4 className="features-title">Implement the Seconds Lamp : </h4>
         <TimePickerComponent timeValue={(time) => setSecondsValue(time.$d)} />
-        <TextField disabled />
+        <TextField disabled value={secondsText} />
       </Box>
 
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <h4 className="features-title">Integrate the Entire Berlin Clock :</h4>
         <TimePickerComponent
           timeValue={(time) => setBerlinClockValue(time.$d)}
         />
-        <TextField disabled />
+        <TextField disabled value={berlinClockText} sx={{ width: "400px"}} />
       </Box>
 
       <h1>Feature 2</h1>
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <h4 className="features-title">Convert Berlin Time to Digital Time :</h4>
         <TextField
           sx={{ width: '400px' }}
-          label="Berlin Clock"
+          label="Berlin Clock Text"
           variant="outlined"
           value={digitalClockValue}
           onChange={(e) => setDigitalClockValue(e.target.value)}
         />
-        <TextField disabled />
+        <TextField disabled value={digitalClockText} />
       </Box>
     </div>
   );
