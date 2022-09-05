@@ -10,7 +10,7 @@ import FiveMinutes from './components/FiveMinutes';
 import Clock from './components/Clock';
 import TimePickerComponent from './components/TimePicker';
 
-import { singleMinutes, fiveMinutes } from './helpers/_functions';
+import { singleMinutes, fiveMinutes, singleHours } from './helpers/_functions';
 
 const BerlinClockWrapper = styled.div`
   display: flex;
@@ -22,6 +22,7 @@ const App = () => {
   const [dateNow, setDateNow] = useState(new Date());
   const [singleMinutesValue, setSingleMinutesValue] = useState(null);
   const [fiveMinutesValue, setFiveMinutesValue] = useState(null);
+  const [singleHoursValue, setSingleHoursValue] = useState(null);
 
   useEffect(() => {
     // save intervalId to clear the interval when the
@@ -39,7 +40,8 @@ const App = () => {
   useEffect(() => {
     console.log('singleMinutes : ', singleMinutes(singleMinutesValue));
     console.log('fiveMinutes : ', fiveMinutes(fiveMinutesValue));
-  }, [singleMinutesValue, fiveMinutesValue]);
+    console.log('singleHoursValue : ', singleHours(singleHoursValue));
+  }, [singleMinutesValue, fiveMinutesValue, singleHoursValue]);
 
   return (
     <div className="App">
@@ -56,6 +58,7 @@ const App = () => {
         timeValue={(time) => setSingleMinutesValue(time.$d)}
       />
       <TimePickerComponent timeValue={(time) => setFiveMinutesValue(time.$d)} />
+      <TimePickerComponent timeValue={(time) => setSingleHoursValue(time.$d)} />
     </div>
   );
 };
