@@ -56,7 +56,7 @@ export const fiveMinutes = (time) => {
 
     ledsArray.forEach((led, index) => {
       if (led) {
-        if (index !== 0 && index % 2 === 0) {
+        if (index !== 0 && ((index + 1) % 3 === 0)) {
           berlinClockconversionArray.push('R');
         } else {
           berlinClockconversionArray.push('Y');
