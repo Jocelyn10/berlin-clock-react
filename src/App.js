@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import './styles.css';
 
 import TextField from '@mui/material/TextField/index';
+import Box from '@mui/material/Box';
 
 import Seconds from './components/Seconds';
 import SingleHours from './components/SingleHours';
@@ -19,7 +20,7 @@ import {
   fiveHours,
   seconds,
   digitalClockBerlinClockConvert,
-  berlinClockDigitalClockConvert
+  berlinClockDigitalClockConvert,
 } from './helpers/_functions';
 
 const BerlinClockWrapper = styled.div`
@@ -63,7 +64,7 @@ const App = () => {
     fiveHoursValue,
     secondsValue,
     berlinClockValue,
-    digitalClockValue
+    digitalClockValue,
   ]);
 
   return (
@@ -77,20 +78,57 @@ const App = () => {
         <SingleMinutes time={dateNow} />
         <Clock time={dateNow} />
       </BerlinClockWrapper>
-      <TimePickerComponent
-        timeValue={(time) => setSingleMinutesValue(time.$d)}
-      />
-      <TimePickerComponent timeValue={(time) => setFiveMinutesValue(time.$d)} />
-      <TimePickerComponent timeValue={(time) => setSingleHoursValue(time.$d)} />
-      <TimePickerComponent timeValue={(time) => setFiveHoursValue(time.$d)} />
-      <TimePickerComponent timeValue={(time) => setSecondsValue(time.$d)} />
-      <TimePickerComponent timeValue={(time) => setBerlinClockValue(time.$d)} />
-      <TextField
-        label="Berlin Clock"
-        variant="outlined"
-        value={digitalClockValue}
-        onChange={(e) => setDigitalClockValue(e.target.value)}
-      />
+
+      <h1>Features 1</h1>
+      <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <TimePickerComponent
+          timeValue={(time) => setSingleMinutesValue(time.$d)}
+        />
+        <TextField disabled />
+      </Box>
+
+      <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <TimePickerComponent
+          timeValue={(time) => setFiveMinutesValue(time.$d)}
+        />
+        <TextField disabled />
+      </Box>
+
+      <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <TimePickerComponent
+          timeValue={(time) => setSingleHoursValue(time.$d)}
+        />
+        <TextField disabled />
+      </Box>
+
+      <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <TimePickerComponent timeValue={(time) => setFiveHoursValue(time.$d)} />
+        <TextField disabled />
+      </Box>
+
+      <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <TimePickerComponent timeValue={(time) => setSecondsValue(time.$d)} />
+        <TextField disabled />
+      </Box>
+
+      <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <TimePickerComponent
+          timeValue={(time) => setBerlinClockValue(time.$d)}
+        />
+        <TextField disabled />
+      </Box>
+
+      <h1>Feature 2</h1>
+      <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+        <TextField
+          sx={{ width: '400px' }}
+          label="Berlin Clock"
+          variant="outlined"
+          value={digitalClockValue}
+          onChange={(e) => setDigitalClockValue(e.target.value)}
+        />
+        <TextField disabled />
+      </Box>
     </div>
   );
 };
