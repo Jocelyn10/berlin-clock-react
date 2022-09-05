@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+[![CircleCI](https://circleci.com/gh/glippi/berlin-clock.svg?style=svg)](https://circleci.com/gh/glippi/berlin-clock)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <h1>Berlin Clock</h1>
+  <img
+    alt="berlin-clock"
+    src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Berlin-Uhr-1650-1705.gif"
+    />
 
-## Available Scripts
+  > implementation of the berlin clock kata
+</div>
 
-In the project directory, you can run:
 
-### `npm start`
+The Berlin Uhr (Clock) is a rather strange way to show the time. On the top of the clock there is a yellow lamp that blinks on/off every two seconds. The time is calculated by adding rectangular lamps.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The top two rows of lamps are red. These indicate the hours of a day. In the top row there are 4 red lamps. Every lamp represents 5 hours. In the lower row of red lamps every lamp represents 1 hour. So if two lamps of the first row and three of the second row are switched on that indicates 5+5+3=13h or 1 pm.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The two rows of lamps at the bottom count the minutes. The first of these rows has 11 lamps, the second 4. In the first row every lamp represents 5 minutes. In this first row the 3rd, 6th and 9th lamp are red and indicate the first quarter, half and last quarter of an hour. The other lamps are yellow. In the last row with 4 lamps every lamp represents 1 minute.
 
-### `npm test`
+The lamps are switched on from left to right.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Test Cases (Y = Yellow, R = Red, O = Off)
 
-### `npm run build`
+Input Result 00:00:00 Y OOOO OOOO OOOOOOOOOOO OOOO
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+13:17:01 O RROO RRRO YYROOOOOOOO YYOO
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+23:59:59 O RRRR RRRO YYRYYRYYRYY YYYY
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+24:00:00 Y RRRR RRRR OOOOOOOOOOO OOOO
 
-### `npm run eject`
+## UI
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The UI is built using React. The components are tested with 
+`@testing-library/react`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### The Kata
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+For more info about the kata, like rules etc., please check:
+  
+  * [Agile Katas](http://agilekatas.co.uk/katas/BerlinClock-Kata)
+  * [CodeWars](https://www.codewars.com/kata/berlin-clock)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Local Development
 
-## Learn More
+As the app was created with *create-react-app*, you have all the scripts that
+are shipped by default with cra, so:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  * install packages: `yarn install`
+  * run tests: `yarn test`
+  * run local server: `yarn start`
+  * build for production: `yarn build`
