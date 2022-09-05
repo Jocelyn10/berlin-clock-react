@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Row from '../Row'
 import { LargeLed } from '../Leds'
 
-const getLastDigit = number => Number.parseInt(number.toString().slice(-1), 10)
+const getLastDigit = number => parseInt(number % 5)
 
 const between = max => number => min => number >= min && number <= max
 
@@ -22,7 +22,7 @@ const getLedsFromTime = time => {
 }
 
 const Led = styled(LargeLed)`
-  background-color: ${({ active }) => (active ? 'red' : 'black')};
+  background-color: ${({ active }) => (active ? 'yellow' : 'black')};
 `
 /**
  * 

@@ -11,7 +11,7 @@ const getLedsFromTime = time => {
     .map((_, index) => index < leds)
 }
 
-const isThird = index => index !== 0 && index % 3 === 0
+const isThird = index => index !== 0 && ((index + 1) % 3) === 0
 
 const Led = styled(SmallLed)`
   background-color: ${({ active, isThird }) =>
