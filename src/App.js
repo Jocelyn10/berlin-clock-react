@@ -8,6 +8,7 @@ import FiveHours from './components/FiveHours';
 import SingleMinutes from './components/SingleMinutes';
 import FiveMinutes from './components/FiveMinutes';
 import Clock from './components/Clock';
+import TimePickerComponent from './components/TimePicker';
 
 const App = () => {
   const [dateNow, setDateNow] = useState(new Date());
@@ -42,6 +43,7 @@ const App = () => {
         <SingleMinutes time={dateNow} />
         <Clock time={dateNow} />
       </BerlinClockWrapper>
+      <TimePickerComponent />
     </div>
   );
 };
