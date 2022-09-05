@@ -190,26 +190,32 @@ export const berlinClockDigitalClockConvert = (berlinClockValue) => {
     let minutes = 0;
     let randomSeconds = randomIntFromInterval(0, 60);
 
+    /**
+     * We use localCompare to compare two strings
+     *  0:  exact match
+     * -1:  string_a < string_b
+     *  1 string_a > string_b
+     */
     berlinClockValue.toString().substring(1, 5).split('').forEach((value) => {
-      if (value !== 'O') {
+      if (value.localeCompare('O') && !value.localeCompare('R')) {
         hours += 5;
       }
     });
 
     berlinClockValue.toString().substring(5, 9).split('').forEach((value) => {
-      if (value !== 'O') {
+      if (value.localeCompare('O') && !value.localeCompare('R')) {
         hours += 1;
       }
     });
 
     berlinClockValue.toString().substring(9, 20).split('').forEach((value) => {
-      if (value !== 'O') {
+      if (value.localeCompare('O') && (!value.localeCompare('R') || !value.localeCompare('Y'))) {
         minutes += 5;
       }
     });
 
     berlinClockValue.toString().substring(20, 24).split('').forEach((value) => {
-      if (value !== 'O') {
+      if (value.localeCompare('O') && (!value.localeCompare('R') || !value.localeCompare('Y'))) {
         minutes += 1;
       }
     });
