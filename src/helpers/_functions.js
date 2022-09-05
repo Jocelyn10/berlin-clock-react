@@ -1,9 +1,9 @@
-const getLedsFromTime = time => {
-  const leds = parseInt(time.getMinutes() / 5)
+const getLedsFromTime = (time) => {
+  const leds = parseInt(time.getMinutes() / 5);
   return Array(11)
     .fill(false)
-    .map((_, index) => index < leds)
-}
+    .map((_, index) => index < leds);
+};
 
 export const singleMinutes = (time) => {
   let berlinClockconversion = '';
@@ -33,27 +33,26 @@ export const singleMinutes = (time) => {
 export const fiveMinutes = (time) => {
   let berlinClockconversionArray = [];
 
-  if(time){
+  if (time) {
     let ledsArray = getLedsFromTime(time);
 
     ledsArray.map((led, index) => {
-      if(led){
-        if(index !== 0 && index % 2 === 0){
-          berlinClockconversionArray.push("R")
-        }else{
-          berlinClockconversionArray.push("Y")
+      if (led) {
+        if (index !== 0 && index % 2 === 0) {
+          berlinClockconversionArray.push('R');
+        } else {
+          berlinClockconversionArray.push('Y');
         }
-      }else{
-        berlinClockconversionArray.push("O")
+      } else {
+        berlinClockconversionArray.push('O');
       }
-    })
+    });
 
-    return berlinClockconversionArray.join('')
+    return berlinClockconversionArray.join('');
   }
 
-  return ""
-}
-
+  return '';
+};
 
 export const singleHours = (time) => {
   let berlinClockconversion = '';
@@ -78,7 +77,7 @@ export const singleHours = (time) => {
   }
 
   return berlinClockconversion;
-}
+};
 
 export const fiveHours = (time) => {
   let berlinClockconversion = '';
@@ -103,4 +102,23 @@ export const fiveHours = (time) => {
   }
 
   return berlinClockconversion;
-}
+};
+
+export const seconds = (time) => {
+  if (time) {
+    if (time.getSeconds() % 2) return 'Y';
+    return 'O';
+  }
+
+  return '';
+};
+
+export const digitalClockBerlinClockConvert = (time) => {
+  if (time) {
+    return `${seconds(time)}${fiveHours(time)}${singleHours(time)}${fiveMinutes(
+      time
+    )}${singleMinutes(time)}`;
+  }
+
+  return '';
+};
