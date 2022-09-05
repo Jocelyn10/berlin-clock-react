@@ -1,3 +1,10 @@
+const getLedsFromTime = time => {
+  const leds = parseInt(time.getMinutes() / 5)
+  return Array(11)
+    .fill(false)
+    .map((_, index) => index < leds)
+}
+
 export const singleMinutes = (time) => {
   let berlinClockconversion = '';
 
@@ -22,3 +29,29 @@ export const singleMinutes = (time) => {
 
   return berlinClockconversion;
 };
+
+export const fiveMinutes = (time) => {
+  let berlinClockconversionArray = [];
+
+  if(time){
+    let ledsArray = getLedsFromTime(time);
+
+    ledsArray.map((led, index) => {
+      if(led){
+        if(index !== 0 && index % 2 === 0){
+          berlinClockconversionArray.push("R")
+        }else{
+          berlinClockconversionArray.push("Y")
+        }
+      }else{
+        berlinClockconversionArray.push("O")
+      }
+    })
+
+    return berlinClockconversionArray.join('')
+  }
+
+  return ""
+}
+
+
