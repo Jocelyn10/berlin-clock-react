@@ -32,6 +32,7 @@ const BerlinClockWrapper = styled.div`
 const App = () => {
   const [dateNow, setDateNow] = useState(new Date());
 
+  // Hooks State for TimePicker 
   const [singleMinutesValue, setSingleMinutesValue] = useState(null);
   const [fiveMinutesValue, setFiveMinutesValue] = useState(null);
   const [singleHoursValue, setSingleHoursValue] = useState(null);
@@ -40,6 +41,7 @@ const App = () => {
   const [berlinClockValue, setBerlinClockValue] = useState(null);
   const [digitalClockValue, setDigitalClockValue] = useState('');
 
+  // Hooks State for TextField
   const [singleMinutesText, setSingleMinutesText] = useState(null);
   const [fiveMinutesText, setFiveMinutesText] = useState(null);
   const [singleHoursText, setSingleHoursText] = useState(null);
@@ -97,7 +99,7 @@ const App = () => {
         <TimePickerComponent
           timeValue={(time) => setSingleMinutesValue(time.$d)}
         />
-        <TextField disabled value={singleMinutesText} />
+        <TextField disabled value={singleMinutesText ? singleMinutesText : ''} />
       </Box>
 
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -105,7 +107,7 @@ const App = () => {
         <TimePickerComponent
           timeValue={(time) => setFiveMinutesValue(time.$d)}
         />
-        <TextField disabled value={fiveMinutesText} />
+        <TextField disabled value={fiveMinutesText ? fiveMinutesText : ''} />
       </Box>
 
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -113,19 +115,19 @@ const App = () => {
         <TimePickerComponent
           timeValue={(time) => setSingleHoursValue(time.$d)}
         />
-        <TextField disabled value={singleHoursText} />
+        <TextField disabled value={singleHoursText ? singleHoursText : ''} />
       </Box>
 
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
         <h4 className="features-title">Implement the Five Hours Row :</h4>
         <TimePickerComponent timeValue={(time) => setFiveHoursValue(time.$d)} />
-        <TextField disabled value={fiveHoursText} />
+        <TextField disabled value={fiveHoursText ? fiveHoursText : ''} />
       </Box>
 
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
         <h4 className="features-title">Implement the Seconds Lamp : </h4>
         <TimePickerComponent timeValue={(time) => setSecondsValue(time.$d)} />
-        <TextField disabled value={secondsText} />
+        <TextField disabled value={secondsText ? secondsText : ''} />
       </Box>
 
       <Box component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -133,7 +135,7 @@ const App = () => {
         <TimePickerComponent
           timeValue={(time) => setBerlinClockValue(time.$d)}
         />
-        <TextField disabled value={berlinClockText} sx={{ width: "400px"}} />
+        <TextField disabled value={berlinClockText ? berlinClockText : ''} sx={{ width: "400px"}} />
       </Box>
 
       <h1>Feature 2</h1>
