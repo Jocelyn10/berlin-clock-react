@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import './styles.css';
 
+import TextField from '@mui/material/TextField/index';
+
 import Seconds from './components/Seconds';
 import SingleHours from './components/SingleHours';
 import FiveHours from './components/FiveHours';
@@ -10,7 +12,15 @@ import FiveMinutes from './components/FiveMinutes';
 import Clock from './components/Clock';
 import TimePickerComponent from './components/TimePicker';
 
-import { singleMinutes, fiveMinutes, singleHours, fiveHours, seconds, digitalClockBerlinClockConvert } from './helpers/_functions';
+import {
+  singleMinutes,
+  fiveMinutes,
+  singleHours,
+  fiveHours,
+  seconds,
+  digitalClockBerlinClockConvert,
+  berlinClockDigitalClockConvert
+} from './helpers/_functions';
 
 const BerlinClockWrapper = styled.div`
   display: flex;
@@ -26,6 +36,7 @@ const App = () => {
   const [fiveHoursValue, setFiveHoursValue] = useState(null);
   const [secondsValue, setSecondsValue] = useState(null);
   const [berlinClockValue, setBerlinClockValue] = useState(null);
+  const [digitalClockValue, setDigitalClockValue] = useState('');
 
   useEffect(() => {
     // save intervalId to clear the interval when the
@@ -41,14 +52,19 @@ const App = () => {
   }, [dateNow]);
 
   useEffect(() => {
-    console.log('singleMinutes : ', singleMinutes(singleMinutesValue));
-    console.log('fiveMinutes : ', fiveMinutes(fiveMinutesValue));
-    console.log('singleHoursValue : ', singleHours(singleHoursValue));
-    console.log('fiveHoursValue : ', fiveHours(singleHoursValue));
-    console.log('fiveHoursValue : ', fiveHours(singleHoursValue));
-    console.log('secondsValue : ', seconds(secondsValue));
-    console.log('berlinClockValue : ', digitalClockBerlinClockConvert(berlinClockValue));
-  }, [singleMinutesValue, fiveMinutesValue, singleHoursValue, fiveHoursValue, secondsValue, berlinClockValue]);
+    console.log(
+      'digitalClockValue : ',
+      berlinClockDigitalClockConvert(digitalClockValue)
+    );
+  }, [
+    singleMinutesValue,
+    fiveMinutesValue,
+    singleHoursValue,
+    fiveHoursValue,
+    secondsValue,
+    berlinClockValue,
+    digitalClockValue
+  ]);
 
   return (
     <div className="App">
@@ -69,6 +85,12 @@ const App = () => {
       <TimePickerComponent timeValue={(time) => setFiveHoursValue(time.$d)} />
       <TimePickerComponent timeValue={(time) => setSecondsValue(time.$d)} />
       <TimePickerComponent timeValue={(time) => setBerlinClockValue(time.$d)} />
+      <TextField
+        label="Berlin Clock"
+        variant="outlined"
+        value={digitalClockValue}
+        onChange={(e) => setDigitalClockValue(e.target.value)}
+      />
     </div>
   );
 };
