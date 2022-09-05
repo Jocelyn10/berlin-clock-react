@@ -8,6 +8,7 @@ import {
   digitalClockBerlinClockConvert,
 } from '../../helpers/_functions';
 
+// Unit Tests for Single Minutes
 describe('Single Minutes', () => {
   it('Single Minutes - Test 1', () => {
     const date = new Date('2011-04-11T00:00:00Z');
@@ -45,6 +46,7 @@ describe('Single Minutes', () => {
   });
 });
 
+// Unit Tests for Five Minutes
 describe('Five Minutes', () => {
   it('Five Minutes - Test 1', () => {
     const date = new Date('2011-04-11T00:00:00Z');
@@ -82,6 +84,11 @@ describe('Five Minutes', () => {
   });
 });
 
+/**
+ * Unit Tests for Single Hours
+ * We put the hours to be sure to have the same time because there is an increment 
+ * of the time
+ */
 describe('Single Hours', () => {
   it('Single Hours - Test 1', () => {
     const date = new Date('2011-04-11');
@@ -129,6 +136,11 @@ describe('Single Hours', () => {
   });
 });
 
+/**
+ * Unit Tests for Five Hours
+ * We put the hours to be sure to have the same time because there is an increment 
+ * of the time
+ */
 describe('Five Hours', () => {
   it('Five Hours - Test 1', () => {
     const date = new Date('2011-04-11');
@@ -176,6 +188,7 @@ describe('Five Hours', () => {
   });
 });
 
+// Unit Tests for Seconds
 describe('Seconds', () => {
   it('Seconds - Test 1', () => {
     const date = new Date('2011-04-11T00:00:00Z');
@@ -192,6 +205,11 @@ describe('Seconds', () => {
   });
 });
 
+/**
+ * Unit Tests for convert Digital Clock to Berlin Clock
+ * We put the hours to be sure to have the same time because there is an increment 
+ * of the time
+ */
 describe('From Digital Clock to Berlin Clock', () => {
   it('From Digital Clock to Berlin Clock - Test 1', () => {
     const date = new Date('2011-04-11T00:00:00Z');
@@ -226,6 +244,11 @@ describe('From Digital Clock to Berlin Clock', () => {
   });
 });
 
+/**
+ * Unit Tests for convert Berlin Clock to Digital Clock
+ * We put the hours to be sure to have the same time because there is an increment 
+ * of the time
+ */
 describe('From Berlin Clock to Digital Clock', () => {
   it('From Berlin Clock to Digital Clock - Test 1', () => {
     const berlinClockValue = 'YOOOOOOOOOOOOOOOOOOOOOOO';
