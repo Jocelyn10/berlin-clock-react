@@ -24,7 +24,11 @@ const getLedsFromTime = time => {
 const Led = styled(LargeLed)`
   background-color: ${({ active }) => (active ? 'red' : 'black')};
 `
-
+/**
+ * 
+ * @param {*} time : current time
+ * @returns Single Hour Blocks
+ */
 const SingleHours = ({ time }) => (
   <Row>{getLedsFromTime(time).map((active, index) => <Led key={index} active={active} />)}</Row>
 )
