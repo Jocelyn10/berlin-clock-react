@@ -79,3 +79,28 @@ export const singleHours = (time) => {
 
   return berlinClockconversion;
 }
+
+export const fiveHours = (time) => {
+  let berlinClockconversion = '';
+
+  if (time) {
+    const hours = time.getHours();
+    const fiveHoursCount = parseInt(hours / 5);
+    berlinClockconversion = 'R'.repeat(fiveHoursCount);
+
+    /**
+     * Pour des raisons de performance, nous voulions
+     * exclure le cas notre module ci-dessus donne 0
+     */
+    if (fiveHoursCount < 4) {
+      const ZeroLettersCount = 4 - fiveHoursCount;
+      const ZeroLettersValue = 'O'.repeat(ZeroLettersCount);
+
+      return berlinClockconversion.concat(ZeroLettersValue);
+    }
+
+    return berlinClockconversion;
+  }
+
+  return berlinClockconversion;
+}
