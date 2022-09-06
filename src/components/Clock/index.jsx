@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 /**
  * 
@@ -10,5 +11,9 @@ const Clock = ({ time }) => (
     {time.getHours()} : {time.getMinutes()} : {time.getSeconds()}
   </p>
 )
+
+Clock.protoTypes = {
+  time: PropTypes.object
+};
 
 export default Clock

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
 
 import Row from '../Row'
 import { SmallLed } from '../Leds'
@@ -30,5 +31,9 @@ const FiveMinute = ({ time }) => (
     ))}
   </Row>
 )
+
+FiveMinute.protoTypes = {
+  time: PropTypes.object
+};
 
 export default FiveMinute

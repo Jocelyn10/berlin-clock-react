@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
 
 import Row from '../Row'
 import { LargeLed } from '../Leds'
@@ -29,5 +30,9 @@ const FiveHour = ({ time }) => (
     ))}
   </Row>
 )
+
+FiveHour.protoTypes = {
+  time: PropTypes.object
+};
 
 export default FiveHour

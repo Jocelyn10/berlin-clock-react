@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
 
 import Row from '../Row'
 import { LargeLed } from '../Leds'
@@ -32,5 +33,9 @@ const Led = styled(LargeLed)`
 const SingleMinute = ({ time }) => (
   <Row>{getLedsFromTime(time).map((active, index) => <Led key={index} active={active} />)}</Row>
 )
+
+SingleMinute.protoTypes = {
+  time: PropTypes.object
+};
 
 export default SingleMinute
